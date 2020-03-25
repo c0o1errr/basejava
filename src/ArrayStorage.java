@@ -2,54 +2,71 @@
  * Array based storage for Resumes
  */
 
-public class ArrayStorage<delete> {
-    Resume[] storage = new Resume[10000];
+public class ArrayStorage {
+    Resume[] storage = new Resume[10_000];
     private String uuid;
 
-    void clear() {
+    public String getUuid() {
+        return uuid;
+    }
+
+    private void setUuid (String uuid) {
+        this.uuid = uuid;
+    }
+
+    private void clear() {
         for (int i = 0; i < storage.length; i++) {
             storage[i] = null;
         }
     }
 
-    void save(Resume r) {
-
-    }
-
-    Resume get(String uuid) {
-                for (int i = 0; i < storage.length; i++) {
-                    if(storage[i].uuid == uuid) {
-                        return storage[i];
-                    }
-                }
-                return null;
-
-    }
-
-    void delete(String uuid) {
+    private void save(Resume resume) {
         for (int i = 0; i < storage.length; i++) {
-            storage[i].uuid = null;
+            if (storage[i].equals(null)) {
+                storage[i] = resume;
+            } else if (storage[i].equals(resume)) {
+                System.out.println("Сохранить невозможно, одинаковые значения");
+            }
+        }
+    }
+
+    private Resume get(String uuid) {
+        for (int i = 0; i < storage.length; i++) {
+            if(storage[i].uuid.equals(uuid)) {
+                return storage[i];
+            }
+        }
+        return null;
+    }
+
+    private void delete(String uuid) {
+        for (int i = 0; i < storage.length; i++) {
+            if (storage[i].equals(null)) {
+                storage[i].uuid = storage[i+1].uuid;
+            } else {
+                storage[i].uuid = storage[i].uuid;
+            }
         }
     }
 
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll() {
-        Resume[] newStorage = new Resume[10000];
+    private Resume[] getAll() {
+        Resume[] newStorage = new Resume[10_000];
         for (int i = 0; i < storage.length; i++){
             storage[i] = newStorage[i];
         }
         return newStorage;
     }
 
-    int size() {
-        for (int i = 0; i < storage.length; i++){
-            // если считать, что массив отсортирован, но это не точно :'(
-            if (storage[i] == null) {
-                System.out.println("Длина массива = " + (i - 1));
-            }
-        }
-        return 0;
+    private int size() {
+         int longStorage = 0;
+         for (int i = 0; i < storage.length; i++) {
+             if (storage[i].equals(null)) {
+                 longStorage = i + 1;
+             }
+         }
+        return longStorage;
     }
 }

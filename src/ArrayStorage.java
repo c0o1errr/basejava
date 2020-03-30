@@ -4,47 +4,41 @@
 
 public class ArrayStorage {
     Resume[] storage = new Resume[10_000];
-    private String uuid;
 
-    public String getUuid() {
-        return uuid;
-    }
-
-    private void setUuid (String uuid) {
-        this.uuid = uuid;
-    }
-
-    private void clear() {
+     void clear() {
         for (int i = 0; i < storage.length; i++) {
             storage[i] = null;
         }
     }
 
-    private void save(Resume resume) {
+     void save(Resume resume) {
+        int size = 0;
         for (int i = 0; i < storage.length; i++) {
-            if (storage[i].equals(null)) {
+            if (storage[i] == null) {
                 storage[i] = resume;
-            } else if (storage[i].equals(resume)) {
+                size = size + 1;
+                return;
+            } else if (storage[i] == resume) {
                 System.out.println("Сохранить невозможно, одинаковые значения");
             }
         }
     }
 
-    private Resume get(String uuid) {
+     Resume get(String uuid) {
         for (int i = 0; i < storage.length; i++) {
-            if(storage[i].uuid.equals(uuid)) {
+            if(storage[i].getUuid() == uuid) {
                 return storage[i];
             }
         }
         return null;
     }
 
-    private void delete(String uuid) {
+     void delete(String uuid) {
         for (int i = 0; i < storage.length; i++) {
-            if (storage[i].equals(null)) {
-                storage[i].uuid = storage[i+1].uuid;
+            if (storage[i] == null) {
+                storage[i] = storage[i+1];
             } else {
-                storage[i].uuid = storage[i].uuid;
+                storage[i] = storage[i];
             }
         }
     }
@@ -52,7 +46,7 @@ public class ArrayStorage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-    private Resume[] getAll() {
+     Resume[] getAll() {
         Resume[] newStorage = new Resume[10_000];
         for (int i = 0; i < storage.length; i++){
             storage[i] = newStorage[i];
@@ -60,10 +54,10 @@ public class ArrayStorage {
         return newStorage;
     }
 
-    private int size() {
+     int size() {
          int longStorage = 0;
          for (int i = 0; i < storage.length; i++) {
-             if (storage[i].equals(null)) {
+             if (storage[i] == null) {
                  longStorage = i + 1;
              }
          }

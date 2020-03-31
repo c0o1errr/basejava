@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Array based storage for Resumes
  */
@@ -7,17 +9,18 @@ public class ArrayStorage {
 
      void clear() {
         for (int i = 0; i < storage.length; i++) {
-            storage[i] = null;
+            if (storage[i] != null) {
+                storage[i] = null;
+            } else {
+                return;
+            }
         }
     }
 
      void save(Resume resume) {
-        int size = 0;
         for (int i = 0; i < storage.length; i++) {
             if (storage[i] == null) {
                 storage[i] = resume;
-                size = size + 1;
-                return;
             } else if (storage[i] == resume) {
                 System.out.println("Сохранить невозможно, одинаковые значения");
             }
@@ -48,17 +51,21 @@ public class ArrayStorage {
      */
      Resume[] getAll() {
         Resume[] newStorage = new Resume[10_000];
+         Arrays.sort(storage);
         for (int i = 0; i < storage.length; i++){
-            storage[i] = newStorage[i];
+            if (storage[i] == null) {
+                newStorage[i] = storage[i-1];
+            }
         }
         return newStorage;
     }
 
      int size() {
+         int size = storage.length;
          int longStorage = 0;
-         for (int i = 0; i < storage.length; i++) {
+         for (int i = 0; i < size; i++) {
              if (storage[i] == null) {
-                 longStorage = i + 1;
+                 longStorage = i - 1;
              }
          }
         return longStorage;

@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * Array based storage for Resumes
  */
@@ -37,26 +35,32 @@ public class ArrayStorage {
     }
 
      void delete(String uuid) {
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                storage[i] = storage[i+1];
+        int count = 0;
+        for (int i = 0; i < storage.length; i++){
+            if(storage[i].getUuid() != uuid){
+                count++;
+            } else if (storage[i] == null) {
+                System.out.println("Пустое значение");
             } else {
-                storage[i] = storage[i];
+                storage[i-count] = storage[i];;
             }
         }
     }
+
 
     /**
      * @return array, contains only Resumes in storage (without null)
      */
      Resume[] getAll() {
         Resume[] newStorage = new Resume[10_000];
-         Arrays.sort(storage);
-        for (int i = 0; i < storage.length; i++){
-            if (storage[i] == null) {
-                newStorage[i] = storage[i-1];
-            }
-        }
+         int count = 0;
+         for (int i = 0; i < storage.length; i++){
+             if (newStorage[i] == null) {
+                 count++;
+             } else {
+                 newStorage[i-count] = newStorage[i];
+             }
+         }
         return newStorage;
     }
 

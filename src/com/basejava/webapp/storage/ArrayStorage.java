@@ -1,3 +1,6 @@
+package com.basejava.webapp.storage;
+
+import com.basejava.webapp.model.Resume;
 /**
  * Array based storage for Resumes
  */
@@ -7,27 +10,25 @@ public class ArrayStorage {
     private int size = 0;
 
     public void clear() {
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] != null) {
-                storage[i] = null;
-            } else {
-                return;
+        for (int i = 0; i < size; i++) {
+            storage[i] = null;
             }
+        size = 0;
         }
-    }
 
     public void save(Resume resume) {
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                storage[i] = resume;
-            } else if (storage[i] == resume) {                      // else if (storage[i] == resume) сравнивать нужно uuid, а не резюме целиком
+        for (int i = 0; i < size; i++) {
+            if (resume.getUuid() == null) {
                 System.out.println("Сохранить невозможно, одинаковые значения");
+            } else {
+                storage[size-i] = resume;
+                size++;
             }
         }
     }
 
     public Resume get(String uuid) {
-        for (int i = 0; i < storage.length; i++) {
+        for (int i = 0; i < size; i++) {
             if(storage[i].getUuid() == uuid) {
                 return storage[i];
             }
@@ -36,14 +37,11 @@ public class ArrayStorage {
     }
 
     public void delete(String uuid) {
-        int count = 0;
-        for (int i = 0; i < storage.length; i++){
-            if(storage[i].getUuid() != uuid){
-                count++;
-            } else if (storage[i] == null) {
-                System.out.println("Пустое значение");
-            } else {
-                storage[i-count] = storage[i];;
+        for (int i = 0; i < size; i++){
+            if(storage[i].getUuid() == uuid) {
+                storage[i] = storage[size - 1];
+                storage[size - 1] = null;
+                size--;
             }
         }
     }
@@ -54,13 +52,8 @@ public class ArrayStorage {
      */
     public Resume[] getAll() {
         Resume[] resumes = new Resume[10_000];
-         int count = 0;
-         for (int i = 0; i < storage.length; i++){
-             if (resumes[i] == null) {
-                 count++;
-             } else {
-                 resumes[i-count] = resumes[i];
-             }
+         for(int i = 0; i<size; i++) {
+             resumes[i] = storage[i];
          }
         return resumes;
     }
@@ -69,3 +62,5 @@ public class ArrayStorage {
         return size;
     }
 }
+
+

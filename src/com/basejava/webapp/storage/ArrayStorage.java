@@ -3,9 +3,10 @@
  */
 
 public class ArrayStorage {
-    Resume[] storage = new Resume[10_000];
+    private Resume[] storage = new Resume[10_000];
+    private int size = 0;
 
-     void clear() {
+    public void clear() {
         for (int i = 0; i < storage.length; i++) {
             if (storage[i] != null) {
                 storage[i] = null;
@@ -15,17 +16,17 @@ public class ArrayStorage {
         }
     }
 
-     void save(Resume resume) {
+    public void save(Resume resume) {
         for (int i = 0; i < storage.length; i++) {
             if (storage[i] == null) {
                 storage[i] = resume;
-            } else if (storage[i] == resume) {
+            } else if (storage[i] == resume) {                      // else if (storage[i] == resume) сравнивать нужно uuid, а не резюме целиком
                 System.out.println("Сохранить невозможно, одинаковые значения");
             }
         }
     }
 
-     Resume get(String uuid) {
+    public Resume get(String uuid) {
         for (int i = 0; i < storage.length; i++) {
             if(storage[i].getUuid() == uuid) {
                 return storage[i];
@@ -34,7 +35,7 @@ public class ArrayStorage {
         return null;
     }
 
-     void delete(String uuid) {
+    public void delete(String uuid) {
         int count = 0;
         for (int i = 0; i < storage.length; i++){
             if(storage[i].getUuid() != uuid){
@@ -51,27 +52,20 @@ public class ArrayStorage {
     /**
      * @return array, contains only Resumes in storage (without null)
      */
-     Resume[] getAll() {
-        Resume[] newStorage = new Resume[10_000];
+    public Resume[] getAll() {
+        Resume[] resumes = new Resume[10_000];
          int count = 0;
          for (int i = 0; i < storage.length; i++){
-             if (newStorage[i] == null) {
+             if (resumes[i] == null) {
                  count++;
              } else {
-                 newStorage[i-count] = newStorage[i];
+                 resumes[i-count] = resumes[i];
              }
          }
-        return newStorage;
+        return resumes;
     }
 
-     int size() {
-         int size = storage.length;
-         int longStorage = 0;
-         for (int i = 0; i < size; i++) {
-             if (storage[i] == null) {
-                 longStorage = i - 1;
-             }
-         }
-        return longStorage;
+    public int size() {
+        return size;
     }
 }

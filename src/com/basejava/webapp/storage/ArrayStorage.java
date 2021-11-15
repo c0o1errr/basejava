@@ -9,57 +9,16 @@ import java.util.Arrays;
  */
 
 public class ArrayStorage extends AbstractArrayStorage {
-    private static final int STORAGE_LIMIT = 10000;
 
-    private final Resume[] storage = new Resume[STORAGE_LIMIT];
-    private int size = 0;
-
-    public void clear() {
-        Arrays.fill(storage, 0, size, null);
-        size = 0;
+    @Override
+    protected void fillDeletedElement(int index) {
+        storage[index] = storage[size - 1];
     }
 
-    public void update(Resume resume) {
-        int index = getIndex(resume.getUuid());
-        if (index == -1) {
-            System.out.println("Resume " + resume.getUuid() + " not exist");
-        } else {
-            storage[index] = resume;
-        }
+    @Override
+    protected void insertElement(Resume resume, int index) {
+        storage[size] = resume;
     }
-
-    public void save(Resume resume) {
-        if (getIndex(resume.getUuid()) != -1) {
-            System.out.println("Resume " + resume.getUuid() + " already exist");
-        } else if (size >= storage.length) {
-            System.out.println("Storage overflow");
-        } else {
-            storage[size] = resume;
-            size++;
-        }
-    }
-
-
-
-    public void delete(String uuid) {
-        int index = getIndex(uuid);
-        if (index == -1) {
-            System.out.println("Resume " + uuid + " not exist");
-        } else {
-            storage[index] = storage[size - 1];
-            storage[size - 1] = null;
-            size--;
-        }
-    }
-
-    /**
-     * @return array, contains only Resumes in storage (without null)
-     */
-
-    public Resume[] getAll() {
-        return Arrays.copyOfRange(storage, 0, size);
-    }
-
 
     protected int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {

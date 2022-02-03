@@ -2,10 +2,7 @@ package com.basejava.webapp;
 
 import com.basejava.webapp.model.Resume;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 public class MainCollections {
     private static final String UUID_1 = "uuid1";
@@ -26,21 +23,30 @@ public class MainCollections {
         collection.add(RESUME_1);
         collection.add(RESUME_2);
         collection.add(RESUME_3);
-        for(Resume r: collection) {
+        for (Resume r : collection) {
             System.out.println(r);
             if (Objects.equals(r.getUuid(), UUID_1)) {
-     //           collection.remove(r);
+                //           collection.remove(r);
             }
         }
         final Iterator<Resume> iterator = collection.iterator();
         while (iterator.hasNext()) {
             Resume r = iterator.next();
-         //   System.out.println(r);
+            //   System.out.println(r);
             if (Objects.equals(r.getUuid(), UUID_1)) {
                 iterator.remove();
             }
         }
 
         System.out.println(collection.toString());
+
+        Map<String, Resume> map = new HashMap<String, Resume>();
+        map.put(UUID_1, RESUME_1);
+        map.put(UUID_2, RESUME_2);
+        map.put(UUID_3, RESUME_3);
+
+        for (Map.Entry<String, Resume> entry : map.entrySet()) {
+            System.out.println(entry.getKey());
+        }
     }
 }

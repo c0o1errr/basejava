@@ -2,6 +2,9 @@ package com.basejava.webapp;
 
 import com.basejava.webapp.model.SectionType;
 
+import static com.basejava.webapp.model.SectionType.CONTACTS;
+import static com.basejava.webapp.model.SectionType.EXPERIENCE;
+
 public class TestSingleton {
     private static TestSingleton instance = new TestSingleton();
 
@@ -15,14 +18,13 @@ public class TestSingleton {
     public static void main(String[] args) {
         TestSingleton.getInstance().toString();
         Singleton instance = Singleton.valueOf("INSTANCE");
-        Singleton chto = Singleton.valueOf("CHTO");
-        System.out.println(instance.toString() + " " + chto.ordinal() + " " + chto.name());
         for (SectionType type : SectionType.values()) {
             System.out.println(type.getTitle());
         }
+        System.out.println(CONTACTS.getTitle() + " 9992093969");
     }
 
     private enum Singleton {
-        INSTANCE, CHTO
+        INSTANCE
     }
 }

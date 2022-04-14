@@ -1,5 +1,7 @@
 package com.basejava.webapp.model;
 
+import java.util.EnumMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -11,6 +13,17 @@ public class Resume implements Comparable<Resume> {
     // Unique identifier
     private final String uuid;
     private String fullName;
+
+    private final Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
+    private final Map<SectionType, Section> sections = new EnumMap<>(SectionType.class);
+
+    public String getContacts(ContactType type) {
+        return contacts.get(type);
+    }
+
+    public Section getSections(SectionType type) {
+        return sections.get(type);
+    }
 
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
@@ -56,6 +69,6 @@ public class Resume implements Comparable<Resume> {
     @Override
     public int compareTo(Resume o) {
         int cmp = fullName.compareTo(o.fullName);
-        return cmp != 0 ? cmp:uuid.compareTo(o.uuid); // если не равняется 0, то возвращаем компейр, а если равняется, то сравнивает uuid
+        return cmp != 0 ? cmp : uuid.compareTo(o.uuid); // если не равняется 0, то возвращаем компайр, а если равняется, то сравнивает uuid
     }
 }

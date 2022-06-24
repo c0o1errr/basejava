@@ -4,6 +4,7 @@ import com.basejava.webapp.exception.ExistStorageException;
 import com.basejava.webapp.exception.NotExistStorageException;
 import com.basejava.webapp.model.Resume;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +21,8 @@ public abstract class AbstractStorage<SK> implements Storage {
     protected abstract void doSave(Resume r, SK searchKey);
 
     protected abstract SK getSearchKey(String uuid);
+
+    protected abstract File getSearchkey(String uuid);
 
     protected abstract void doDelete(SK searchKey);
 

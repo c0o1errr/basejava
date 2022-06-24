@@ -1,26 +1,30 @@
 package com.basejava.webapp.model;
 
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class OrganizationSection extends Section{
-    private final List<OrganizationSection> organization;
+    private final List<Organization> organizations;
 
-
-    public OrganizationSection(List<OrganizationSection> organization) {
-        Objects.requireNonNull(organization,"organization must not be null");
-        this.organization = organization;
+    public OrganizationSection(Organization... organizations) {
+        this(Arrays.asList(organizations));
     }
 
-    public List<OrganizationSection> getOrganization() {
-        return organization;
+    public OrganizationSection(List<Organization> organization) {
+        Objects.requireNonNull(organization,"organization must not be null");
+        this.organizations = organization;
+    }
+
+    public List<Organization> getOrganization() {
+        return organizations;
     }
 
     @Override
     public String toString() {
         return "OrganizationSection{" +
-                "organization=" + organization +
+                "organization=" + organizations +
                 '}';
     }
 
@@ -31,11 +35,11 @@ public class OrganizationSection extends Section{
 
         OrganizationSection that = (OrganizationSection) o;
 
-        return organization.equals(that.organization);
+        return organizations.equals(that.organizations);
     }
 
     @Override
     public int hashCode() {
-        return organization.hashCode();
+        return organizations.hashCode();
     }
 }

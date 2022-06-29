@@ -22,7 +22,7 @@ public abstract class AbstractStorage<SK> implements Storage {
 
     protected abstract SK getSearchKey(String uuid);
 
-    protected abstract File getSearchkey(String uuid);
+    //protected abstract File getSearchkey(String uuid);
 
     protected abstract void doDelete(SK searchKey);
 

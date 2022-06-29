@@ -2,6 +2,7 @@ package com.basejava.webapp.storage;
 
 import com.basejava.webapp.model.Resume;
 
+import java.io.File;
 import java.util.*;
 
 public class MapUuidStorage extends AbstractStorage<String> {

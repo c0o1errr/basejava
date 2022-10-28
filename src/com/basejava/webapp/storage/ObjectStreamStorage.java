@@ -7,12 +7,14 @@ import java.io.*;
 public class ObjectStreamStorage extends AbstractFileStorage{
 
     @Override
-    protected void doWrite(Resume r, OutputStream file) throws IOException {
-        
+    protected void doWrite(Resume r, OutputStream os) throws IOException {
+        try(ObjectOutputStream oos = new ObjectOutputStream(os)) {
+            oos.writeObject(r);
+        }
     }
 
     @Override
-    protected Resume doRead(InputStream file) throws IOException {
+    protected Resume doRead(InputStream is) throws IOException {
         return null;
     }
 

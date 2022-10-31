@@ -2,6 +2,7 @@ package com.basejava.webapp.model;
 
 import com.basejava.webapp.util.DateUtil;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -13,7 +14,9 @@ import java.util.concurrent.TimeUnit;
 import static com.basejava.webapp.util.DateUtil.*;
 import static com.basejava.webapp.util.DateUtil.NOW;
 
-public class Organization {
+public class Organization implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private final Link homePage;  // name, url
     private List<Position> positions = new ArrayList<>();
 
@@ -31,7 +34,7 @@ public class Organization {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Organization that = (Organization) o;
-        return  Objects.equals(homePage, that.homePage) &&
+        return Objects.equals(homePage, that.homePage) &&
                 Objects.equals(positions, that.positions);
     }
 
@@ -45,17 +48,17 @@ public class Organization {
         return "Organization(" + homePage + "," + positions + ')';
     }
 
-    public static class Position {
+    public static class Position implements Serializable {
         private final LocalDate startDate;
         private final LocalDate endDate;
         private final String title;
         private final String description;
 
-        public Position (int startYear, Month startMonth, String title, String description) {
+        public Position(int startYear, Month startMonth, String title, String description) {
             this(of(startYear, startMonth), NOW, title, description);
         }
 
-        public Position (int startYear, Month startMonth, int endYear, Month endMonth, String title, String description) {
+        public Position(int startYear, Month startMonth, int endYear, Month endMonth, String title, String description) {
             this(of(startYear, startMonth), of(endYear, endMonth), title, description);
         }
 
@@ -75,7 +78,7 @@ public class Organization {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Position position = (Position) o;
-            return  Objects.equals(startDate, position.startDate) &&
+            return Objects.equals(startDate, position.startDate) &&
                     Objects.equals(endDate, position.endDate) &&
                     Objects.equals(title, position.title) &&
                     Objects.equals(description, position.description);

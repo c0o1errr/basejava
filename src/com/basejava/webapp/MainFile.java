@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class MainFile {
     public static void main(String[] args) throws IOException {
-        File file = new File("C:\\basejava\\.gitignore");
+        File file = new File("D:\\basejava\\.gitignore");
         System.out.println(file.getCanonicalPath());
         File dir = new File(".\\src\\com\\basejava\\webapp");
         System.out.println(dir.isDirectory());
@@ -27,22 +27,20 @@ public class MainFile {
                 fis.close();
             }
         }
-
-        printDirectoryDeeply(dir);
-
+        printDirectoryDeeply(dir, "");
     }
 
 
-    public static void printDirectoryDeeply(File dir) {
+    public static void printDirectoryDeeply(File dir, String offset) {
         File[] files = dir.listFiles();
 
         if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
-                    System.out.println("File: " + file.getName());
+                    System.out.println(offset + "F: " + file.getName());
                 } else if (file.isDirectory()) {
-                    System.out.println("Directory: " + file.getName());
-                    printDirectoryDeeply(file);
+                    System.out.println(offset+ "D: " + file.getName());
+                    printDirectoryDeeply(file, offset + "  ");
                 }
             }
         }

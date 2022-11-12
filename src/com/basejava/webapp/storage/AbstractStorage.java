@@ -36,27 +36,17 @@ public abstract class AbstractStorage<SK> implements Storage {
         doUpdate(r, searchKey);
     }
 
-    @Override
-    public List<Resume> getAllSorted() {
-        LOG.info("getAllSorted");
-        List<Resume> list = doCopyAll();
-        Collections.sort(list);
-        return list;
-    }
-
     public void save(Resume r) {
         LOG.info("Save" + r);
         SK searchKey = getNotExistedSearchKey(r.getUuid());
         doSave(r, searchKey);
     }
 
-
     public void delete(String uuid) {
         LOG.info("Delete" + uuid);
         SK searchKey = getExistedSearchKey(uuid);
         doDelete(searchKey);
     }
-
 
     public Resume get(String uuid) {
         LOG.info("Get" + uuid);
@@ -81,4 +71,14 @@ public abstract class AbstractStorage<SK> implements Storage {
         }
         return searchKey;
     }
+
+    @Override
+    public List<Resume> getAllSorted() {
+        LOG.info("getAllSorted");
+        List<Resume> list = doCopyAll();
+        Collections.sort(list);
+        return list;
+    }
+
+
 }

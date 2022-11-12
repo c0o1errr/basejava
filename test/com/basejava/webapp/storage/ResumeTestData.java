@@ -1,4 +1,4 @@
-package com.basejava.webapp.storage;
+/*package com.basejava.webapp.storage;
 
 import com.basejava.webapp.model.*;
 
@@ -36,4 +36,4 @@ public class ResumeTestData extends AbstractStorageTest{
                                 new Organization.Position(2018, Month.APRIL, "position2", "content2")
                 )));
     }
-}
+*/

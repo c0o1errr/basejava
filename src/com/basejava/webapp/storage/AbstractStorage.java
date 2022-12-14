@@ -5,14 +5,12 @@ import com.basejava.webapp.exception.NotExistStorageException;
 import com.basejava.webapp.model.Resume;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 public abstract class AbstractStorage<SK> implements Storage {
+    //protected final Logger log = Logger.getLogger(getClass().getName());
     private static final Logger LOG = Logger.getLogger(AbstractStorage.class.getName());
-    /*protected final Logger log = Logger.getLogger(getClass().getName());*/
 
     protected abstract boolean isExist(SK searchKey);
 

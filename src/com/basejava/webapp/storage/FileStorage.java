@@ -102,6 +102,6 @@ public class FileStorage extends AbstractStorage<File> {
         for (File file : files) {
             list.add(doGet(file));
         }
-        return null;
+        return list;
     }
 }

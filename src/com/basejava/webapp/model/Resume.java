@@ -27,18 +27,6 @@ public class Resume implements Comparable<Resume>, Serializable {
     public Resume() {
     }
 
-    public String getContacts(ContactType type) {
-        return contacts.get(type);
-    }
-
-    public Section getSections(SectionType type) {
-        return sections.get(type);
-    }
-
-    public void addContact(ContactType type, String value) { contacts.put(type,value);}
-
-    public void addSection(SectionType type, Section section) {sections.put(type, section);}
-
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
     }
@@ -50,14 +38,25 @@ public class Resume implements Comparable<Resume>, Serializable {
         this.fullName = fullName;
     }
 
-
     public String getUuid() {
         return uuid;
     }
 
-   /* public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }*/
+    public String getContact(ContactType type) {
+        return contacts.get(type);
+    }
+
+    public Section getSection(SectionType type) {
+        return sections.get(type);
+    }
+
+    public void addContact(ContactType type, String value) {
+        contacts.put(type, value);
+    }
+
+    public void addSection(SectionType type, Section section) {
+        sections.put(type, section);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,9 +77,6 @@ public class Resume implements Comparable<Resume>, Serializable {
     @Override
     public String toString() {
         return uuid + '(' + fullName + ')';
-    }
-
-    public void setUuid(String uuid) {
     }
 
     @Override

@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 
 public abstract class AbstractStorageTest {
-    protected static final File STORAGE_DIR = new File("D:\\project\\storage");
+    protected static final File STORAGE_DIR = new File("D:\\basejava\\storage");
 
     protected Storage storage;
 
@@ -95,7 +95,7 @@ public abstract class AbstractStorageTest {
 
     @Test(expected = NotExistStorageException.class)
     public void updateNotExist() throws Exception {
-        storage.delete("dummy");
+        storage.get("dummy");
     }
 
     @Test
@@ -142,11 +142,13 @@ public abstract class AbstractStorageTest {
         storage.get("dummy");
     }
 
-    private void assertSize(int size) {
-        Assert.assertEquals(size, storage.size());
-    }
-
     private void assertGet(Resume r) {
         assertEquals(r, storage.get(r.getUuid()));
     }
+
+    private void assertSize(int size) {
+        assertEquals(size, storage.size());
+    }
+
+
 }

@@ -87,7 +87,7 @@ public class Organization implements Serializable {
             this.description = description;
         }
 
-        public LocalDate getStartDate(){
+        public LocalDate getStartDate() {
             return startDate;
         }
 
@@ -95,11 +95,11 @@ public class Organization implements Serializable {
             return endDate;
         }
 
-        public String getTitle(){
+        public String getTitle() {
             return title;
         }
 
-        public String getDescription(){
+        public String getDescription() {
             return description;
         }
 

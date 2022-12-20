@@ -1,7 +1,6 @@
 package com.basejava.webapp.storage;
 
 import com.basejava.webapp.model.*;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import com.basejava.webapp.exception.ExistStorageException;
@@ -38,7 +37,7 @@ public abstract class AbstractStorageTest {
 
         R1.addContact(ContactType.MAIL, "d0theshka@gmail.com");
         R1.addContact(ContactType.GITHUB, "https://github.com/c0o1errr");
-        R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
+       /* R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
         R1.addSection(SectionType.PERSONAL, new TextSection("Personal data"));
         R1.addSection(SectionType.ACHIEVEMENT, new ListSection("Achievement11", "Achievement12", "Achievement13"));
         R1.addSection(SectionType.QUALIFICATIONS, new ListSection("Java", "Hyipizda", "by4yi hyi"));
@@ -59,7 +58,7 @@ public abstract class AbstractStorageTest {
                 new OrganizationSection(
                         new Organization("Organization22", "http://organization22.ru",
                                 new Organization.Position(2018, Month.APRIL, "position2", "content2")
-                        )));
+                        )));*/
     }
 
     public AbstractStorageTest(Storage storage) {

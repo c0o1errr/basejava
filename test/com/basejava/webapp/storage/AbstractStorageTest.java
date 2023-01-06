@@ -51,10 +51,10 @@ public abstract class AbstractStorageTest {
                         new Organization("МГТУ Станкин", "https://stankin.ru/",
                                 new Organization.Position(2006, Month.SEPTEMBER, 2010, Month.MAY, "student", "Механика и управление"))));
         new Organization("БГТУ Воеменх", "https://www.voenmeh.ru/",
-                new Organization.Position(2010, Month.SEPTEMBER, 2012, Month.MAY, "student", "Авиакосмический"));
+                new Organization.Position(2010, Month.SEPTEMBER, 2012, Month.MAY, "student", "Авиакосмический"));*/
         R2.addContact(ContactType.SKYPE, "lmedionl");
         R2.addContact(ContactType.PHONE, "+7-999-209-39-69");
-        R2.addSection(SectionType.EXPERIENCE,
+        /*R2.addSection(SectionType.EXPERIENCE,
                 new OrganizationSection(
                         new Organization("Organization22", "http://organization22.ru",
                                 new Organization.Position(2018, Month.APRIL, "position2", "content2")

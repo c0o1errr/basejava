@@ -3,6 +3,8 @@ package com.basejava.webapp.storage.serializer;
 import com.basejava.webapp.exception.StorageException;
 import com.basejava.webapp.model.ContactType;
 import com.basejava.webapp.model.Resume;
+import com.basejava.webapp.model.Section;
+import com.basejava.webapp.model.SectionType;
 
 import javax.xml.crypto.Data;
 import java.io.*;
@@ -22,6 +24,12 @@ public class DataStreamSerializer implements StreamSerializer {
                 dos.writeUTF(entry.getValue());
             }
             // TO DO implements Sections
+            /*Map<SectionType, Section> sections = r.getSections();
+            dos.writeInt(sections.size());
+            for(Map.Entry<SectionType, Section> entry: sections.entrySet()) {
+                dos.writeUTF(entry.getKey().name());
+                dos.writeUTF(sections.toString());
+            }*/
         }
     }
 

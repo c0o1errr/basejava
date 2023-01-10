@@ -2,7 +2,6 @@ package com.basejava.webapp;
 
 import com.basejava.webapp.model.SectionType;
 
-import static com.basejava.webapp.model.SectionType.CONTACTS;
 import static com.basejava.webapp.model.SectionType.EXPERIENCE;
 
 public class TestSingleton {
@@ -21,7 +20,7 @@ public class TestSingleton {
         for (SectionType type : SectionType.values()) {
             System.out.println(type.getTitle());
         }
-        System.out.println(CONTACTS.getTitle() + " 9992093969");
+        //System.out.println(CONTACTS.getTitle() + " 9992093969");
     }
 
     private enum Singleton {

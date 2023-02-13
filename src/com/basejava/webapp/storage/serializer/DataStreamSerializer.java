@@ -25,9 +25,9 @@ public class DataStreamSerializer implements StreamSerializer {
                 dos.writeUTF(entry.getValue());
             });
             // TO DO implements Sections
-            writeCollection(dos, r.getSections().entrySet(), entery -> {
-                SectionType type = entery.getKey();
-                Section section = entery.getValue();
+            writeCollection(dos, r.getSections().entrySet(), entry -> {
+                SectionType type = entry.getKey();
+                Section section = entry.getValue();
                 dos.writeUTF(type.name());
                 switch (type) {
                     case OBJECTIVE:

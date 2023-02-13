@@ -33,7 +33,7 @@ public abstract class AbstractStorageTest {
         R1 = new Resume(UUID_1, "Name1");
         R2 = new Resume(UUID_2, "Name2");
         R3 = new Resume(UUID_3, "Name3");
-        R4 = new Resume(UUID_4, "Name4");
+        R4 = new Resume(UUID_4, "Name4");QUAL
 
         R1.addContact(ContactType.MAIL, "d0theshka@gmail.com");
         R1.addContact(ContactType.GITHUB, "https://github.com/c0o1errr");

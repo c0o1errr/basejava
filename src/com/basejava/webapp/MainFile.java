@@ -31,18 +31,18 @@ public class MainFile {
     }
 
 
-    public static void printDirectoryDeeply(File dir, String offset) {
-        File[] files = dir.listFiles();
+        public static void printDirectoryDeeply(File dir, String offset) {
+            File[] files = dir.listFiles();
 
-        if (files != null) {
-            for (File file : files) {
-                if (file.isFile()) {
-                    System.out.println(offset + "F: " + file.getName());
-                } else if (file.isDirectory()) {
-                    System.out.println(offset+ "D: " + file.getName());
-                    printDirectoryDeeply(file, offset + "  ");
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        System.out.println(offset + "F: " + file.getName());
+                    } else if (file.isDirectory()) {
+                        System.out.println(offset+ "D: " + file.getName());
+                        printDirectoryDeeply(file, offset + "  ");
+                    }
                 }
             }
-        }
     }
 }

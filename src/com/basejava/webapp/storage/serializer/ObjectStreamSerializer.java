@@ -1,6 +1,6 @@
 package com.basejava.webapp.storage.serializer;
 
-import com.basejava.webapp.exception.StorageException;
+import  com.basejava.webapp.exception.StorageException;
 import com.basejava.webapp.model.Resume;
 
 import java.io.*;
@@ -23,4 +23,3 @@ public class ObjectStreamSerializer implements StreamSerializer {
         }
     }
 }
-

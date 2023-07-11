@@ -1,7 +1,5 @@
 package com.basejava.webapp.sql;
 
-import com.basejava.webapp.exception.StorageException;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

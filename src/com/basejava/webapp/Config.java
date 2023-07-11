@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class Config {
+public class  Config {
     private static final File PROPS = new File(".\\config\\resumes.properties");
     private static final Config INSTANCE = new Config();
 
@@ -24,7 +24,7 @@ public class Config {
         try (InputStream is = new FileInputStream(PROPS)) {
             Properties props = new Properties();
             props.load(is);
-            props.getProperty("storage.dir");
+            //props.getProperty("storage.dir");
             storageDir = new File(props.getProperty("storage.dir"));
             storage = new SqlStorage(props.getProperty("db.url"), props.getProperty("db.user"), props.getProperty("db.password"));
         } catch (IOException e) {

@@ -10,6 +10,7 @@ import com.basejava.webapp.exception.NotExistStorageException;
 import java.io.File;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -105,8 +106,9 @@ public abstract class AbstractStorageTest {
     public void getAllSorted() throws Exception {
         List<Resume> list = storage.getAllSorted();              // возвращает лист
         assertEquals(3, list.size());
-        assertEquals(list, Arrays.asList(R1, R2, R3));
-
+        List<Resume> sortedResumes = Arrays.asList(R1, R2, R3);
+        Collections.sort(sortedResumes);
+        assertEquals(list, sortedResumes);
     }
 
     @Test
